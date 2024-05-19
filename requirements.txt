@@ -2,3 +2,4 @@ os
 groq
 llama-index-llms-groq
 llama-index
+qdrant_client

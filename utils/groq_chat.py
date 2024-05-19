@@ -17,5 +17,5 @@ def groq_chat(messages: list[dict], model = 'llama3-70b-8192', temperature = 0.5
 
     return chat_completion
 
-chat = groq_chat(messages=[{'role': 'user', 'content': 'how are you doing?'}])
-print (chat.choices[0].message.content)
+# chat = groq_chat(messages=[{'role': 'user', 'content': 'how are you doing?'}])
+# print (chat.choices[0].message.content)
