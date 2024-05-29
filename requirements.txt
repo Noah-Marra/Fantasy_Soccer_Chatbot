@@ -1,5 +1,8 @@
-os
 groq
 llama-index-llms-groq
 llama-index
 qdrant_client
+llama-index-vector-stores-qdrant
+llama-index-embeddings-gemini
+google-generativeai
+python-dotenv

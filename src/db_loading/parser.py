@@ -1,3 +1,4 @@
+import os
 from llama_index.core import SimpleDirectoryReader
 from llama_index.readers.file import CSVReader
 from llama_parse import LlamaParse
@@ -5,19 +6,17 @@ from llama_parse import LlamaParse
 import nest_asyncio
 nest_asyncio.apply()
 
-def csv_parser(folder_path):
-    parser = CSVReader()
-    file_extractor = {".csv": parser}  # Add other CSV formats as needed
+def parser(folder_path):
+    csv_parser = CSVReader()
+    pdf_parser = LlamaParse(
+        api_key=os.getenv('LLAMA_CLOUD_API_KEY'),
+        result_type="markdown",
+        verbose=True
+    )
+    file_extractor = {".csv": csv_parser, ".pdf": pdf_parser}
     documents = SimpleDirectoryReader(
         folder_path, file_extractor=file_extractor
     ).load_data()
-
-    return documents
-
-def pdf_parser(folder_path):
-    documents = LlamaParse(
-        result_type="markdown"
-    ).load_data(folder_path)
 
     return documents
 
